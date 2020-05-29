@@ -40,7 +40,7 @@ sudo apt-get install -y libtiff-dev libjpeg-dev libpng-dev
 sudo apt-get install -y python-tk libgtk-3-dev
 sudo apt-get install -y libcanberra-gtk-module libcanberra-gtk3-module
 sudo apt-get install -y libv4l-dev libdc1394-22-dev
-echo "${BIPur}Python virtual environments${RESET}"
+echo -e "${BIPur}Python virtual environments${RESET}"
 wget https://bootstrap.pypa.io/get-pip.py
 sudo python3 get-pip.py
 rm get-pip.py

@@ -115,8 +115,16 @@ sudo apt-get install -y python3-dev python3-numpy python3-py python3-pytest
 sudo apt-get install -y libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev 
 
 cd $OPENCV_SOURCE_DIR
-git clone --branch "$OPENCV_VERSION" https://github.com/opencv/opencv.git
-git clone --branch "$OPENCV_VERSION" https://github.com/opencv/opencv_contrib.git
+#git clone --branch "$OPENCV_VERSION" https://github.com/opencv/opencv.git
+#git clone --branch "$OPENCV_VERSION" https://github.com/opencv/opencv_contrib.git
+wget https://github.com/opencv/opencv/archive/4.3.0.zip \
+       -O opencv-4.3.0.zip
+wget https://github.com/opencv/opencv_contrib/archive/4.3.0.zip \
+       -O opencv_contrib-4.3.0.zip
+unzip opencv-4.3.0.zip
+unzip opencv_contrib-4.3.0.zip
+mv opencv-4.3.0 opencv
+mv opencv_contrib-4.3.0 opencv_contrib
 
 if [ $DOWNLOAD_OPENCV_EXTRAS == "YES" ] ; then
  echo "Installing opencv_extras"
@@ -154,6 +162,7 @@ echo $PWD
 time cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D CMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} \
       -D WITH_CUDA=ON \
+      -D OPENCV_ENABLE_NONFREE=ON \
       -D CUDA_ARCH_BIN=${ARCH_BIN} \
       -D CUDA_ARCH_PTX="" \
       -D ENABLE_FAST_MATH=ON \
@@ -169,9 +178,11 @@ time cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D BUILD_opencv_python3=ON \
       -D BUILD_TESTS=OFF \
       -D BUILD_PERF_TESTS=OFF \
+      -D CMAKE_BUILD_TYPE=RELEASE \
       -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
       $"PACKAGE_OPENCV" \
       ../
+
 
 
 if [ $? -eq 0 ] ; then

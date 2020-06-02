@@ -23,6 +23,7 @@ sudo apt-get install -y libssl-dev libcurl4-openssl-dev
 sudo apt-get install -y cython3
 sudo apt-get install -y libxml2-dev libxslt1-dev
 echo -e "${On_Pur}Update CMake${RESET}"
+cd ~
 wget http://www.cmake.org/files/v3.17/cmake-3.17.3.tar.gz
 tar xpvf cmake-3.17.3.tar.gz cmake-3.17.3/
 
@@ -52,6 +53,7 @@ echo 'source /usr/local/bin/virtualenvwrapper.sh' >> ~/.bashrc
 source ~/.bashrc
 
 echo -e "${BIPur}Install the Protobuf Compiler${RESET}"
+cd ~
 wget https://raw.githubusercontent.com/jkjung-avt/jetson_nano/master/install_protobuf-3.6.1.sh
 sudo chmod +x install_protobuf-3.6.1.sh
 ./install_protobuf-3.6.1.sh

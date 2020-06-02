@@ -30,7 +30,8 @@ tar xpvf cmake-3.17.3.tar.gz cmake-3.17.3/
 cd cmake-3.17.3/
 ./bootstrap --system-curl
 make -j4
-echo 'export PATH=/home/$USER/cmake-3.17.3/bin/:$PATH' >> ~/.bashrc
+sudo make -j4 install
+
 source ~/.bashrc
 echo -e "${BIPur}Install OpenCV system-level dependencies and other development dependencies${RESET}"
 sudo apt-get install -y build-essential pkg-config

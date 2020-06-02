@@ -42,6 +42,14 @@ sudo apt-get install -y libtiff-dev libjpeg-dev libpng-dev
 sudo apt-get install -y python-tk libgtk-3-dev
 sudo apt-get install -y libcanberra-gtk-module libcanberra-gtk3-module
 sudo apt-get install -y libv4l-dev libdc1394-22-dev
+
+echo -e "${BIPur}Install the Protobuf Compiler${RESET}"
+cd ~
+wget https://raw.githubusercontent.com/jkjung-avt/jetson_nano/master/install_protobuf-3.6.1.sh
+sudo chmod +x install_protobuf-3.6.1.sh
+./install_protobuf-3.6.1.sh
+
+exit 0
 echo -e "${BIPur}Python virtual environments${RESET}"
 wget https://bootstrap.pypa.io/get-pip.py
 sudo python3 get-pip.py
@@ -53,13 +61,6 @@ echo 'export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3' >> ~/.bashrc
 echo 'source /usr/local/bin/virtualenvwrapper.sh' >> ~/.bashrc
 source ~/.bashrc
 
-echo -e "${BIPur}Install the Protobuf Compiler${RESET}"
-cd ~
-wget https://raw.githubusercontent.com/jkjung-avt/jetson_nano/master/install_protobuf-3.6.1.sh
-sudo chmod +x install_protobuf-3.6.1.sh
-./install_protobuf-3.6.1.sh
-
-exit 0
 echo -e "${BIPur}Create your ‘py3cv4’ virtual environment${RESET}"
 mkvirtualenv py3cv4 -p python3
 workon py3cv4

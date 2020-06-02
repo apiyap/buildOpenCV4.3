@@ -178,11 +178,11 @@ time cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D WITH_GSTREAMER_0_10=OFF \
       -D WITH_QT=ON \
       -D WITH_OPENGL=ON \
+      -D WITH_PROTOBUF=ON \
       -D BUILD_opencv_python2=ON \
       -D BUILD_opencv_python3=ON \
       -D BUILD_TESTS=OFF \
       -D BUILD_PERF_TESTS=OFF \
-      -D CMAKE_BUILD_TYPE=RELEASE \
       -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
       $"PACKAGE_OPENCV" \
       ../ |& tee build-report.txt

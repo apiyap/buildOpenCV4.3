@@ -23,13 +23,13 @@ sudo apt-get install -y libssl-dev libcurl4-openssl-dev
 sudo apt-get install -y cython3
 sudo apt-get install -y libxml2-dev libxslt1-dev
 echo -e "${On_Pur}Update CMake${RESET}"
-wget http://www.cmake.org/files/v3.13/cmake-3.13.0.tar.gz
-tar xpvf cmake-3.13.0.tar.gz cmake-3.13.0/
+wget http://www.cmake.org/files/v3.17/cmake-3.17.3.tar.gz
+tar xpvf cmake-3.17.3.tar.gz cmake-3.17.3/
 
-cd cmake-3.13.0/
+cd cmake-3.17.3/
 ./bootstrap --system-curl
 make -j4
-echo 'export PATH=/home/$USER/cmake-3.13.0/bin/:$PATH' >> ~/.bashrc
+echo 'export PATH=/home/$USER/cmake-3.17.3/bin/:$PATH' >> ~/.bashrc
 source ~/.bashrc
 echo -e "${BIPur}Install OpenCV system-level dependencies and other development dependencies${RESET}"
 sudo apt-get install -y build-essential pkg-config
@@ -50,15 +50,17 @@ echo 'export WORKON_HOME=/home/$USER/.virtualenvs' >> ~/.bashrc
 echo 'export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3' >> ~/.bashrc
 echo 'source /usr/local/bin/virtualenvwrapper.sh' >> ~/.bashrc
 source ~/.bashrc
-echo -e "${BIPur}Create your ‘py3cv4’ virtual environment${RESET}"
-mkvirtualenv py3cv4 -p python3
-workon py3cv4
-deactivate
+
 echo -e "${BIPur}Install the Protobuf Compiler${RESET}"
 wget https://raw.githubusercontent.com/jkjung-avt/jetson_nano/master/install_protobuf-3.6.1.sh
 sudo chmod +x install_protobuf-3.6.1.sh
 ./install_protobuf-3.6.1.sh
 
+exit 0
+echo -e "${BIPur}Create your ‘py3cv4’ virtual environment${RESET}"
+mkvirtualenv py3cv4 -p python3
+workon py3cv4
+deactivate
 workon py3cv4 # if you aren't inside the environment
 cd ~
 cp -r ~/src/protobuf-3.6.1/python/ .
@@ -66,7 +68,6 @@ cd python
 python setup.py install --cpp_implementation
 
 deactivate
-
 
 
 

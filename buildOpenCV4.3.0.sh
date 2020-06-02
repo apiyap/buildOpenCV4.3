@@ -185,9 +185,7 @@ time cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D CMAKE_BUILD_TYPE=RELEASE \
       -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
       $"PACKAGE_OPENCV" \
-      ../
-
-
+      ../ |& tee build-report.txt
 
 if [ $? -eq 0 ] ; then
   echo "CMake configuration make successful"
